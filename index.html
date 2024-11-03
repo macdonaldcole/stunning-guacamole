@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<script>
+  function updateCountdown() {
+    const now = new Date();
+    const target = new Date(now.getFullYear(), 11, 25); // December 25 of this year
+    if (now > target) target.setFullYear(target.getFullYear() + 1);
+
+    const diff = target - now;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('countdown').innerText =
+      `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  setInterval(updateCountdown, 1000);
+</script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("public/cbkg38.gif");
+    }
+
+    #countdown {
+      font-family: "Mountains of Christmas", sans-serif;
+      font-size: 20vmin;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="countdown"></div>
+</body>
+
+</html>
